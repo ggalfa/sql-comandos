@@ -59,7 +59,7 @@ SELECT COUNT(*) FROM exercise_logs WHERE
  
 /*
 
-
+CASE é utilizado para fornecer o tipo de lógica "if-then-else" à linguagem SQL. A sua sintaxe é:
 
 */
 
@@ -75,7 +75,8 @@ FROM exercise_logs;
 
 /*
 
-
+Aqui utilizamos COUNT, CASE, ROUND e GROUP BY onde realizamos consultas mais
+avançadas com SELECT.
 
 */
 
@@ -88,3 +89,23 @@ SELECT COUNT(*),
     END as "hr_zone"
 FROM exercise_logs
 GROUP BY hr_zone;
+
+/* EXERCICIO:
+
+Criamos um banco de dados para controle das notas dos alunos, com o nome, 
+a nota e a porcentagem de atividades que eles completaram. Nessa primeira etapa, 
+selecione todas as linhas e exiba as propriedades name, number_grade e percent_completed, 
+que você pode calcular multiplicando e arredondando a coluna fraction_completed.
+
+*/
+
+SELECT COUNT(*),
+    CASE
+        WHEN number_grade > 90 THEN "A"
+        WHEN number_grade > 80 THEN "B"
+        WHEN number_grade > 70 THEN "C"
+        ELSE "F"
+    END AS "letter_grade"
+FROM student_grades
+GROUP BY letter_grade;
+
